@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Award, Target, ArrowRight, MessageSquare, Download, BarChart2, Database, Cpu } from 'lucide-react';
+import { ArrowRight, MessageSquare, Download, BarChart2, Database, Cpu } from 'lucide-react';
 
 interface AboutProps {
   isDarkMode: boolean;
