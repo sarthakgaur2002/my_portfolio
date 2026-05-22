@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Analytics } from '@vercel/analytics/react';
 import { ParticleBackground } from './components/ParticleBackground';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
@@ -70,6 +71,7 @@ function App() {
 
   return (
     <>
+      <Analytics />
       <AnimatePresence mode="wait">
         {loading ? (
           /* PRELOADER SCREEN */
