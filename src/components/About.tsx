@@ -217,8 +217,8 @@ export const About: React.FC<AboutProps> = ({ isDarkMode }) => {
               </button>
 
               <a
-                href="/sarthak_resume.png"
-                download="Sarthak_Gaur_Resume.png"
+                href="/sarthak_resume.pdf"
+                download="Sarthak_Gaur_Resume.pdf"
                 className={`flex items-center space-x-2 px-6 py-3 rounded-lg font-bold border transition-all duration-300 hover:scale-105 ${
                   isDarkMode
                     ? 'border-cyber-secondary/40 text-cyber-secondary hover:border-cyber-secondary hover:bg-cyber-secondary/10'

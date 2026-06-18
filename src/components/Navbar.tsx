@@ -122,8 +122,8 @@ export const Navbar: React.FC<NavbarProps> = ({ isDarkMode, toggleTheme }) => {
             </button>
             
             <a
-              href="/sarthak_resume.png"
-              download="Sarthak_Gaur_Resume.png"
+              href="/sarthak_resume.pdf"
+              download="Sarthak_Gaur_Resume.pdf"
               className={`flex items-center space-x-2 px-4 py-2 rounded-lg font-medium text-sm border transition-all duration-300 ${
                 isDarkMode
                   ? 'border-cyber-primary/40 text-cyber-primary hover:bg-cyber-primary/10 hover:border-cyber-primary shadow-neon-blue'
@@ -194,8 +194,8 @@ export const Navbar: React.FC<NavbarProps> = ({ isDarkMode, toggleTheme }) => {
           ))}
           <div className="pt-2 px-4">
             <a
-              href="/sarthak_resume.png"
-              download="Sarthak_Gaur_Resume.png"
+              href="/sarthak_resume.pdf"
+              download="Sarthak_Gaur_Resume.pdf"
               className={`flex items-center justify-center space-x-2 w-full py-3 rounded-lg text-center font-semibold text-sm border transition-all ${
                 isDarkMode
                   ? 'border-cyber-primary/40 text-cyber-primary hover:bg-cyber-primary/10 shadow-neon-blue'
