@@ -69,8 +69,8 @@ function App() {
           <Hero isDarkMode={isDarkMode} />
           <About isDarkMode={isDarkMode} />
           <Skills isDarkMode={isDarkMode} />
-          <Projects isDarkMode={isDarkMode} />
           <Experience isDarkMode={isDarkMode} />
+          <Projects isDarkMode={isDarkMode} />
           <Contact isDarkMode={isDarkMode} />
         </main>
         
