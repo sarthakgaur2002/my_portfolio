@@ -78,12 +78,9 @@ export const Navbar: React.FC<NavbarProps> = ({ isDarkMode, toggleTheme }) => {
           {/* Logo */}
           <div 
             onClick={() => scrollTo('home')}
-            className="flex items-center cursor-pointer space-x-2 group"
+            className="flex items-center cursor-pointer group"
           >
-            <div className="w-10 h-10 rounded-lg bg-gradient-to-tr from-cyber-primary to-cyber-secondary flex items-center justify-center font-bold text-lg text-white shadow-neon-blue group-hover:scale-105 transition-all">
-              SG
-            </div>
-            <span className={`text-xl font-bold tracking-wider ${isDarkMode ? 'text-white' : 'text-slate-900'} hover:text-cyber-primary transition-colors`}>
+            <span className={`text-lg font-bold tracking-widest ${isDarkMode ? 'text-white' : 'text-slate-900'} hover:text-cyber-primary transition-colors`}>
               SARTHAK<span className="text-cyber-primary">.</span>GAUR
             </span>
           </div>
