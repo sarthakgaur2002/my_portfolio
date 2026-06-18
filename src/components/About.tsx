@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, MessageSquare, Download, BarChart2, Database, Cpu } from 'lucide-react';
+import { ArrowRight, MessageSquare, Download, BarChart2, Database } from 'lucide-react';
 
 interface AboutProps {
   isDarkMode: boolean;
@@ -143,16 +143,7 @@ export const About: React.FC<AboutProps> = ({ isDarkMode }) => {
           
           {/* Identity Left Column */}
           <div className="lg:col-span-7 space-y-8 text-left relative z-10">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: false, margin: "-100px" }}
-              transition={{ duration: 0.6 }}
-              className="inline-flex items-center space-x-2 px-3 py-1 rounded-full border border-cyber-primary/25 bg-cyber-primary/10 text-cyber-primary font-mono text-sm shadow-neon-blue"
-            >
-              <Cpu size={14} className="animate-spin-slow" />
-              <span>PROFILE DATA LOADED</span>
-            </motion.div>
+
 
             <motion.h1
               initial={{ opacity: 0, x: -30 }}
