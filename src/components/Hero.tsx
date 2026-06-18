@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown } from 'lucide-react';
+
 
 interface HeroProps {
   isDarkMode: boolean;
@@ -93,35 +93,7 @@ export const Hero: React.FC<HeroProps> = ({ isDarkMode }) => {
 
       </div>
 
-      {/* Scroll indicator */}
-      <motion.div 
-        className="absolute bottom-12 flex flex-col items-center justify-center cursor-pointer z-20 group"
-        onClick={() => scrollTo('about')}
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1, duration: 1 }}
-      >
-        <span className={`font-mono text-xs mb-3 tracking-widest uppercase transition-colors ${
-          isDarkMode ? 'text-gray-400 group-hover:text-cyber-primary' : 'text-slate-500 group-hover:text-cyber-lightPrimary'
-        }`}>
-          Initialize Core Data
-        </span>
-        <div className={`w-[30px] h-[50px] rounded-full border-2 flex justify-center p-2 transition-colors ${
-          isDarkMode ? 'border-gray-500 group-hover:border-cyber-primary shadow-neon-blue' : 'border-slate-400 group-hover:border-cyber-lightPrimary'
-        }`}>
-          <motion.div 
-            animate={{ y: [0, 15, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-            className={`w-1.5 h-3 rounded-full ${isDarkMode ? 'bg-cyber-primary' : 'bg-cyber-lightPrimary'}`}
-          />
-        </div>
-        <motion.div
-          animate={{ y: [0, 5, 0], opacity: [0.5, 1, 0.5] }}
-          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut", delay: 0.2 }}
-        >
-          <ChevronDown className={`mt-2 ${isDarkMode ? 'text-cyber-primary' : 'text-cyber-lightPrimary'}`} size={20} />
-        </motion.div>
-      </motion.div>
+
     </section>
   );
 };
