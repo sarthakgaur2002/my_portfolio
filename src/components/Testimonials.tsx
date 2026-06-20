@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Quote, ChevronLeft, ChevronRight } from 'lucide-react';
+import React from 'react';
+import { motion } from 'framer-motion';
+import { Quote } from 'lucide-react';
 
 interface TestimonialsProps {
   isDarkMode: boolean;
@@ -31,50 +31,8 @@ const testimonials = [
 ];
 
 export const Testimonials: React.FC<TestimonialsProps> = ({ isDarkMode }) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [direction, setDirection] = useState(0);
-
-  // Auto-play
-  useEffect(() => {
-    const timer = setInterval(() => {
-      handleNext();
-    }, 6000); // Change slide every 6 seconds
-    return () => clearInterval(timer);
-  }, [currentIndex]);
-
-  const handleNext = () => {
-    setDirection(1);
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
-  };
-
-  const handlePrev = () => {
-    setDirection(-1);
-    setCurrentIndex((prevIndex) => (prevIndex === 0 ? testimonials.length - 1 : prevIndex - 1));
-  };
-
-  const variants = {
-    enter: (direction: number) => {
-      return {
-        x: direction > 0 ? 200 : -200,
-        opacity: 0,
-        scale: 0.9
-      };
-    },
-    center: {
-      zIndex: 1,
-      x: 0,
-      opacity: 1,
-      scale: 1
-    },
-    exit: (direction: number) => {
-      return {
-        zIndex: 0,
-        x: direction < 0 ? 200 : -200,
-        opacity: 0,
-        scale: 0.9
-      };
-    }
-  };
+  // Quadruple the array to ensure enough width for continuous scrolling on wide displays
+  const marqueeItems = [...testimonials, ...testimonials, ...testimonials, ...testimonials];
 
   return (
     <section id="testimonials" className="relative py-20 overflow-hidden">
@@ -84,10 +42,10 @@ export const Testimonials: React.FC<TestimonialsProps> = ({ isDarkMode }) => {
         style={{ pointerEvents: 'none' }}
       />
 
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="w-full relative z-10">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-16 px-4">
           <motion.h2
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -102,102 +60,59 @@ export const Testimonials: React.FC<TestimonialsProps> = ({ isDarkMode }) => {
           <div className="w-20 h-[3px] bg-gradient-to-r from-cyber-secondary to-cyber-primary mx-auto mt-4" />
         </div>
 
-        {/* Carousel Container */}
-        <div className="relative h-[400px] sm:h-[350px] flex items-center justify-center">
-          
-          <AnimatePresence initial={false} custom={direction} mode="wait">
-            <motion.div
-              key={currentIndex}
-              custom={direction}
-              variants={variants}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              transition={{
-                x: { type: "spring", stiffness: 300, damping: 30 },
-                opacity: { duration: 0.2 }
-              }}
-              className={`absolute w-full max-w-2xl mx-auto p-8 sm:p-12 rounded-3xl border flex flex-col items-center text-center ${
-                isDarkMode 
-                  ? 'glass-card border-white/10 shadow-neon-purple/20' 
-                  : 'glass-card-light border-black/10 shadow-xl'
-              }`}
-            >
-              <Quote className={`w-12 h-12 mb-6 opacity-20 ${isDarkMode ? 'text-cyber-secondary' : 'text-purple-500'}`} />
-              
-              <p className={`text-lg sm:text-xl italic font-medium leading-relaxed mb-8 ${isDarkMode ? 'text-gray-300' : 'text-slate-700'}`}>
-                "{testimonials[currentIndex].text}"
-              </p>
-              
-              <div className="flex flex-col items-center">
-                <div className={`w-16 h-16 rounded-full overflow-hidden border-2 mb-4 ${
-                  isDarkMode ? 'border-cyber-secondary shadow-neon-purple' : 'border-purple-400'
-                }`}>
-                  <img 
-                    src={testimonials[currentIndex].image} 
-                    alt={testimonials[currentIndex].name}
-                    className="w-full h-full object-cover"
-                    onError={(e) => {
-                      // Fallback if image fails to load
-                      (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=${testimonials[currentIndex].name.replace(' ', '+')}&background=00f0ff&color=000`;
-                    }}
-                  />
+        {/* Marquee Wrapper with side-fading gradients */}
+        <div className="relative w-full overflow-hidden py-4">
+          {/* Fading gradient masks on edges */}
+          <div className={`absolute top-0 bottom-0 left-0 w-16 sm:w-32 z-20 pointer-events-none bg-gradient-to-r ${
+            isDarkMode ? 'from-[#020208] to-transparent' : 'from-slate-50 to-transparent'
+          }`} />
+          <div className={`absolute top-0 bottom-0 right-0 w-16 sm:w-32 z-20 pointer-events-none bg-gradient-to-l ${
+            isDarkMode ? 'from-[#020208] to-transparent' : 'from-slate-50 to-transparent'
+          }`} />
+
+          {/* Marquee flex container */}
+          <div className="flex w-max animate-marquee">
+            {marqueeItems.map((item, idx) => (
+              <div
+                key={idx}
+                className={`w-[300px] sm:w-[360px] flex-shrink-0 p-6 rounded-2xl border flex flex-col justify-between mx-4 transition-all ${
+                  isDarkMode 
+                    ? 'glass-card border-white/10 hover:border-cyber-secondary/50 shadow-neon-purple/5' 
+                    : 'glass-card-light border-black/5 hover:border-purple-300/50 shadow-md'
+                }`}
+              >
+                <div>
+                  <Quote className={`w-5 h-5 mb-3 opacity-20 ${isDarkMode ? 'text-cyber-secondary' : 'text-purple-500'}`} />
+                  <p className={`text-xs sm:text-sm italic leading-relaxed mb-4 ${isDarkMode ? 'text-gray-300' : 'text-slate-600'}`}>
+                    "{item.text}"
+                  </p>
                 </div>
-                <h4 className={`font-bold text-lg ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>
-                  {testimonials[currentIndex].name}
-                </h4>
-                <p className={`text-sm font-mono text-cyber-secondary mt-1`}>
-                  {testimonials[currentIndex].role}
-                </p>
+                
+                <div className="flex items-center gap-3 mt-4 pt-4 border-t border-dashed border-white/10">
+                  <div className={`w-8 h-8 rounded-full overflow-hidden border ${
+                    isDarkMode ? 'border-cyber-secondary/30' : 'border-purple-300'
+                  }`}>
+                    <img 
+                      src={item.image} 
+                      alt={item.name}
+                      className="w-full h-full object-cover"
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=${item.name.replace(' ', '+')}&background=00f0ff&color=000`;
+                      }}
+                    />
+                  </div>
+                  <div>
+                    <h4 className={`font-bold text-xs ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>
+                      {item.name}
+                    </h4>
+                    <p className="text-[10px] font-mono text-cyber-secondary">
+                      {item.role}
+                    </p>
+                  </div>
+                </div>
               </div>
-            </motion.div>
-          </AnimatePresence>
-
-          {/* Navigation Buttons */}
-          <div className="absolute top-1/2 -translate-y-1/2 left-0 sm:-left-4 z-20">
-            <button 
-              onClick={handlePrev}
-              className={`p-3 rounded-full border transition-all ${
-                isDarkMode 
-                  ? 'bg-[#0a0b16] border-white/10 hover:border-cyber-secondary text-white hover:text-cyber-secondary shadow-lg' 
-                  : 'bg-white border-black/10 hover:border-purple-500 text-slate-800 hover:text-purple-600 shadow-md'
-              }`}
-            >
-              <ChevronLeft size={24} />
-            </button>
+            ))}
           </div>
-          
-          <div className="absolute top-1/2 -translate-y-1/2 right-0 sm:-right-4 z-20">
-            <button 
-              onClick={handleNext}
-              className={`p-3 rounded-full border transition-all ${
-                isDarkMode 
-                  ? 'bg-[#0a0b16] border-white/10 hover:border-cyber-secondary text-white hover:text-cyber-secondary shadow-lg' 
-                  : 'bg-white border-black/10 hover:border-purple-500 text-slate-800 hover:text-purple-600 shadow-md'
-              }`}
-            >
-              <ChevronRight size={24} />
-            </button>
-          </div>
-          
-        </div>
-
-        {/* Dots Indicators */}
-        <div className="flex justify-center space-x-3 mt-12">
-          {testimonials.map((_, idx) => (
-            <button
-              key={idx}
-              onClick={() => {
-                setDirection(idx > currentIndex ? 1 : -1);
-                setCurrentIndex(idx);
-              }}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                currentIndex === idx
-                  ? isDarkMode ? 'bg-cyber-secondary shadow-neon-purple scale-125' : 'bg-purple-600 scale-125'
-                  : isDarkMode ? 'bg-white/20 hover:bg-white/40' : 'bg-black/20 hover:bg-black/40'
-              }`}
-            />
-          ))}
         </div>
 
       </div>

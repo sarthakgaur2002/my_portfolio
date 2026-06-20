@@ -169,3 +169,21 @@
   z-index: 1;
   transition: width 0.3s ease, height 0.3s ease;
 }
+
+/* Infinite Testimonial Marquee Styles */
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
