@@ -16,17 +16,17 @@ const testimonials = [
   },
   {
     id: 2,
-    name: "Business Leader",
-    role: "Director of Analytics (Placeholder)",
-    text: "Sarthak's technical depth in Python and Power BI is remarkable. He single-handedly re-engineered our CRM logic which boosted conversions by 35%. A rare talent who bridges the gap between data engineering and executive strategy perfectly.",
-    image: "https://ui-avatars.com/api/?name=Business+Leader&background=00f0ff&color=000&rounded=true&font-size=0.33"
+    name: "Shailja Mittal",
+    role: "Founder, RxMen",
+    text: "Sarthak worked as a Business Analyst with us at RxMen, driving key product optimizations and A/B testing that significantly shortened our customer journey. His custom Power BI dashboards and automated data workflows eliminated hours of manual analysis, letting us focus on scaling the product.",
+    image: "/shailja.png"
   },
   {
     id: 3,
-    name: "Stakeholder",
-    role: "VP of Sales (Placeholder)",
-    text: "Working with Sarthak fundamentally changed how we operate. His data models cut our reporting time from hours to minutes, giving us real-time visibility into our pipeline. He doesn't just deliver data; he delivers solutions.",
-    image: "https://ui-avatars.com/api/?name=Stake+Holder&background=a855f7&color=fff&rounded=true&font-size=0.33"
+    name: "Strategic Partner",
+    role: "Director of Analytics (Demo)",
+    text: "Sarthak's technical depth in Python and Power BI is remarkable. He single-handedly re-engineered CRM query pipelines and dashboard designs. A rare talent who bridges the gap between raw data engineering and executive strategy.",
+    image: "https://ui-avatars.com/api/?name=Strategic+Partner&background=00f0ff&color=000&rounded=true&font-size=0.33"
   }
 ];
 
