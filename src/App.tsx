@@ -7,6 +7,7 @@ import { About } from './components/About';
 import { Skills } from './components/Skills';
 import { Projects } from './components/Projects';
 import { Experience } from './components/Experience';
+import { Testimonials } from './components/Testimonials';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 
@@ -71,6 +72,7 @@ function App() {
           <Skills isDarkMode={isDarkMode} />
           <Experience isDarkMode={isDarkMode} />
           <Projects isDarkMode={isDarkMode} />
+          <Testimonials isDarkMode={isDarkMode} />
           <Contact isDarkMode={isDarkMode} />
         </main>
         
