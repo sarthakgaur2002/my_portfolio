@@ -16,7 +16,7 @@ export const About: React.FC<AboutProps> = ({ isDarkMode }) => {
   const [isDeleting, setIsDeleting] = useState(false);
 
   const titles = [
-    'Data Analyst',
+    'Data Scientist',
     'Business Analyst',
     'Product-minded Analyst',
     'Dashboard & Insights Specialist'
@@ -106,7 +106,7 @@ export const About: React.FC<AboutProps> = ({ isDarkMode }) => {
     },
     {
       year: '2024 - Present',
-      title: 'Senior Data Analyst (Promoted Oct 2025)',
+      title: 'Data Scientist (Promoted Oct 2025)',
       institution: 'PlanetSpark',
       desc: 'Automated DB sync pipelines reducing cycle times by 2 days/week. Optimised marketing campaigns saving $1M+.'
     }
@@ -181,7 +181,7 @@ export const About: React.FC<AboutProps> = ({ isDarkMode }) => {
               className={`space-y-4 text-base leading-relaxed ${isDarkMode ? 'text-gray-400' : 'text-slate-600'}`}
             >
               <p>
-                I am a <strong>Senior Data Analyst</strong> with a strong engineering background in Electronics & Communication. I specialize in turning complex raw datasets into clear, actionable business strategies. My mindset is centered on <strong>product and efficiency</strong>: whether it's optimizing ad spend to save millions, re-engineering CRM pipelines to maximize conversions, or building automated ETL workflows.
+                I am a <strong>Data Scientist</strong> with a strong background in data analysis, engineering. I specialize in turning complex raw datasets into clear, actionable business strategies. My mindset is centered on <strong>product and efficiency</strong>: whether it's optimizing ad spend to save millions, re-engineering CRM pipelines to maximize conversions, or building automated ETL workflows.
               </p>
               <p>
                 With expertise in Python, SQL, Power BI, and automation platforms like Power Automate, I bridge the gap between technical infrastructure and executive leadership.

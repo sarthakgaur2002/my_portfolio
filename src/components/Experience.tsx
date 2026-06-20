@@ -23,7 +23,7 @@ export const Experience: React.FC<ExperienceProps> = ({ isDarkMode }) => {
       id: 1,
       company: 'PlanetSpark',
       companyLogo: '/planetspark.png',
-      role: 'Senior Data Analyst (Promoted from Data Analyst, Oct \'25)',
+      role: 'Data Scientist (Promoted from Data Analyst, Oct \'25)',
       duration: '09/2024 - Present',
       tools: ['Google Sheets/Excel', 'SQL', 'Python', 'Jira', 'Metabase', 'Power BI', 'Power Automate'],
       responsibilities: [

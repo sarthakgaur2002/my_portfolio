@@ -24,15 +24,16 @@ interface SkillItem {
 export const Skills: React.FC<SkillsProps> = ({ isDarkMode }) => {
   const [activeTab, setActiveTab] = useState<'all' | 'analytics' | 'visualization' | 'databases' | 'programming' | 'tools'>('all');
   const [clickedSkills, setClickedSkills] = useState<Record<string, boolean>>({});
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   // Radar chart data indicating domain proficiency
   const radarData = [
-    { subject: 'Data Analysis', A: 95, B: 100, fullMark: 100 },
-    { subject: 'Visualisation', A: 90, B: 100, fullMark: 100 },
-    { subject: 'SQL & DBs', A: 88, B: 100, fullMark: 100 },
-    { subject: 'Scripting', A: 85, B: 100, fullMark: 100 },
-    { subject: 'Business Analysis', A: 92, B: 100, fullMark: 100 },
-    { subject: 'Automation', A: 90, B: 100, fullMark: 100 },
+    { subject: 'Data Analysis', A: 95, B: 100, fullMark: 100, pointer: hoveredIndex === 0 ? 100 : 0 },
+    { subject: 'Visualisation', A: 90, B: 100, fullMark: 100, pointer: hoveredIndex === 1 ? 100 : 0 },
+    { subject: 'SQL & DBs', A: 88, B: 100, fullMark: 100, pointer: hoveredIndex === 2 ? 100 : 0 },
+    { subject: 'Scripting', A: 85, B: 100, fullMark: 100, pointer: hoveredIndex === 3 ? 100 : 0 },
+    { subject: 'Business Analysis', A: 92, B: 100, fullMark: 100, pointer: hoveredIndex === 4 ? 100 : 0 },
+    { subject: 'Automation', A: 90, B: 100, fullMark: 100, pointer: hoveredIndex === 5 ? 100 : 0 },
   ];
 
   const categories = [
@@ -143,7 +144,20 @@ export const Skills: React.FC<SkillsProps> = ({ isDarkMode }) => {
             
             <div className="w-full h-full">
               <ResponsiveContainer width="100%" height="100%">
-                <RadarChart cx="50%" cy="50%" outerRadius="70%" data={radarData}>
+                <RadarChart 
+                  cx="50%" 
+                  cy="50%" 
+                  outerRadius="70%" 
+                  data={radarData}
+                  onMouseMove={(state) => {
+                    if (state && state.activeTooltipIndex !== undefined) {
+                      setHoveredIndex(state.activeTooltipIndex);
+                    } else {
+                      setHoveredIndex(null);
+                    }
+                  }}
+                  onMouseLeave={() => setHoveredIndex(null)}
+                >
                   <PolarGrid stroke={isDarkMode ? 'rgba(255, 255, 255, 0.08)' : 'rgba(0, 0, 0, 0.08)'} />
                   <PolarAngleAxis 
                     dataKey="subject" 
@@ -177,6 +191,16 @@ export const Skills: React.FC<SkillsProps> = ({ isDarkMode }) => {
                     fillOpacity={0.6}
                     dot={{ r: 3, fill: '#00f0ff', strokeWidth: 2, stroke: isDarkMode ? '#0a0b16' : '#fff' }}
                     activeDot={{ r: 6, fill: '#a855f7', strokeWidth: 0, className: 'animate-pulse' }}
+                  />
+                  {/* Dynamic neon pointer ray following the mouse */}
+                  <Radar
+                    name="Pointer"
+                    dataKey="pointer"
+                    stroke="#a855f7"
+                    strokeWidth={hoveredIndex !== null ? 3 : 0}
+                    fill="none"
+                    dot={false}
+                    activeDot={false}
                   />
                   <defs>
                     <linearGradient id="colorRadar" x1="0" y1="0" x2="0" y2="1">

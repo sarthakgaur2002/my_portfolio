@@ -110,7 +110,7 @@ export const Contact: React.FC<ContactProps> = ({ isDarkMode }) => {
               Let's connect and build something impactful.
             </h3>
             <p className={`text-base leading-relaxed mb-8 ${isDarkMode ? 'text-gray-300' : 'text-slate-600'}`}>
-              I am open to Senior Data Analyst, Business Analyst, or Dashboard Consultant opportunities. Reach out if you want to optimize your marketing performance or build automated reporting pipelines!
+              I am open to Data Engineer, Data Analyst, Business Analyst, Data Consultant, or similar roles. Reach out if you want to optimize your marketing performance or build automated reporting pipelines!
             </p>
 
             {/* Info Cards */}
