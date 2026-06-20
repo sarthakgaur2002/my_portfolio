@@ -23,10 +23,10 @@ const testimonials = [
   },
   {
     id: 3,
-    name: "Strategic Partner",
-    role: "Director of Analytics (Demo)",
-    text: "Sarthak's technical depth in Python and Power BI is remarkable. He single-handedly re-engineered CRM query pipelines and dashboard designs. A rare talent who bridges the gap between raw data engineering and executive strategy.",
-    image: "https://ui-avatars.com/api/?name=Strategic+Partner&background=00f0ff&color=000&rounded=true&font-size=0.33"
+    name: "Akilan AP",
+    role: "RevOps Manager, inFeedo",
+    text: "Sarthak worked closely with me in the RevOps team at inFeedo. He built over 20 dynamic dashboards and integrated dozens of datasets, boosting overall data transparency by 25% and empowering our leadership team to make strategic, data-driven decisions much faster.",
+    image: "/akilan.png"
   }
 ];
 
